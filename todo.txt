@@ -1,0 +1,6 @@
+1. add our names somewhere
+2. reformat the font sizes for correct answers and the colors 
+to correspond with light dark
+3. message at end of game
+4. disclaimer 
+5. make this online friendly 
