@@ -171,7 +171,6 @@
         @media (max-width: 768px) {
             #game-container {
                 height: 40vh;
-                /* Adjust height for smaller screens */
             }
 
             #game {
@@ -179,8 +178,64 @@
                 /* 4 columns */
                 grid-template-rows: repeat(4, 1fr);
                 /* 4 rows */
-                grid-auto-rows: calc(40vh / 4 - 10px);
-                /* Adjusted row height based on container height and number of rows */
+                grid-auto-rows: calc(10vh - 10px);
+            }
+
+            .box {
+                width: 20vw;
+                /* Adjusted width */
+                height: 20vw;
+                /* Adjusted height */
+                font-size: 12px;
+                /* Adjusted font size */
+                margin: 2px;
+                /* Adjusted margin */
+            }
+
+            #submit-button {
+                font-size: 14px;
+                /* Adjusted font size */
+                padding: 10px;
+                /* Adjusted padding */
+                margin-top: 10px;
+                /* Adjusted margin top */
+                font-weight: 600;
+                display: flex;
+                width: fit-content;
+                min-width: 5.5em;
+                height: 3em;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 0;
+                max-width: 80vw;
+                border-radius: 32px;
+                line-height: 1.5em;
+                cursor: pointer;
+                border: black solid 1px;
+                /* Keep the same border */
+                color: black;
+                /* Set the text color to black */
+            }
+
+
+            .side-box {
+                width: 90%;
+                /* Adjusted width */
+                padding: 5px;
+                /* Adjusted padding */
+                margin-top: 5px;
+                /* Adjusted margin top */
+                font-size: 10px;
+                /* Adjusted font size */
+            }
+
+            .bubble {
+                width: 10px;
+                /* Adjusted width */
+                height: 10px;
+                /* Adjusted height */
+                margin-top: 15px;
             }
         }
     </style>
@@ -229,22 +284,6 @@
         let incorrectSubmissions = 0;
         let selectedWords = [];
 
-        // function initGame() {
-        //     let boxes = document.querySelectorAll('.box');
-
-        //     boxes.forEach(box => {
-        //         box.addEventListener('click', () => {
-        //             box.classList.toggle('selected');
-        //             const word = box.getAttribute('data-word');
-        //             const index = selectedWords.indexOf(word);
-        //             if (box.classList.contains('selected')) {
-        //                 selectedWords.push(word);
-        //             } else {
-        //                 selectedWords.splice(index, 1);
-        //             }
-        //         });
-        //     });
-        // }
         function initGame() {
             let boxes = document.querySelectorAll('.box');
 
@@ -467,7 +506,7 @@
 
         window.onload = function () {
             initGame();
-            adjustGridForMobile(); 
+            adjustGridForMobile();
         }
 
         window.addEventListener('resize', adjustGridForMobile);
