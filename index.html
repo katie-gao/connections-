@@ -167,6 +167,22 @@
         #mode-toggle:focus {
             outline: none;
         }
+
+        @media (max-width: 768px) {
+            #game-container {
+                height: 40vh;
+                /* Adjust height for smaller screens */
+            }
+
+            #game {
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 columns */
+                grid-template-rows: repeat(4, 1fr);
+                /* 4 rows */
+                grid-auto-rows: calc(40vh / 4 - 10px);
+                /* Adjusted row height based on container height and number of rows */
+            }
+        }
     </style>
 </head>
 
@@ -213,18 +229,40 @@
         let incorrectSubmissions = 0;
         let selectedWords = [];
 
+        // function initGame() {
+        //     let boxes = document.querySelectorAll('.box');
+
+        //     boxes.forEach(box => {
+        //         box.addEventListener('click', () => {
+        //             box.classList.toggle('selected');
+        //             const word = box.getAttribute('data-word');
+        //             const index = selectedWords.indexOf(word);
+        //             if (box.classList.contains('selected')) {
+        //                 selectedWords.push(word);
+        //             } else {
+        //                 selectedWords.splice(index, 1);
+        //             }
+        //         });
+        //     });
+        // }
         function initGame() {
             let boxes = document.querySelectorAll('.box');
 
             boxes.forEach(box => {
                 box.addEventListener('click', () => {
-                    box.classList.toggle('selected');
-                    const word = box.getAttribute('data-word');
-                    const index = selectedWords.indexOf(word);
+                    // Check if already selected
                     if (box.classList.contains('selected')) {
-                        selectedWords.push(word);
-                    } else {
+                        box.classList.remove('selected');
+                        const word = box.getAttribute('data-word');
+                        const index = selectedWords.indexOf(word);
                         selectedWords.splice(index, 1);
+                    } else {
+                        // Check if less than 4 words selected
+                        if (selectedWords.length < 4) {
+                            box.classList.add('selected');
+                            const word = box.getAttribute('data-word');
+                            selectedWords.push(word);
+                        }
                     }
                 });
             });
@@ -306,7 +344,7 @@
                 submittedCategories[correctSubmission.color] = true;
                 showSideBox(correctSubmission.color, correctSubmission.text);
                 moveTiles(correctSubmission.words);
-                
+
             } else {
                 let selectedBoxes = document.querySelectorAll('.box.selected');
                 let incorrectSubmissionFound = false;
@@ -413,9 +451,26 @@
         function submitWords() {
             console.log("Submit button clicked!"); // Check if submit button is clicked
             checkConnections();
+            selectedWords = [];
         }
 
-        window.onload = initGame;
+        function adjustGridForMobile() {
+            const screenWidth = window.innerWidth;
+            const gameContainer = document.getElementById('game-container');
+            if (screenWidth <= 768) { // Adjust for smaller screens (e.g., tablets and mobile devices)
+                gameContainer.style.height = '40vh'; // Reduce the height
+                const game = document.getElementById('game');
+                game.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 columns
+                game.style.gridAutoRows = 'calc(50vw - 10px)'; // Adjust row height
+            }
+        }
+
+        window.onload = function () {
+            initGame();
+            adjustGridForMobile(); 
+        }
+
+        window.addEventListener('resize', adjustGridForMobile);
     </script>
 </body>
 
