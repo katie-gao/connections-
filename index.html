@@ -145,12 +145,14 @@
         .side-box {
             display: block;
             background-color: #a0c35a;
-            color: white;
+            color: black;
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
             width: 420px;
             flex-direction: column;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         #mode-toggle {
@@ -171,73 +173,48 @@
         @media (max-width: 768px) {
             #game-container {
                 height: 40vh;
-                margin-top: 20px;
+                margin-top: 40px;
             }
 
             #game {
-                grid-template-columns: repeat(4, 1fr);
-                /* 4 columns */
-                grid-template-rows: repeat(4, 1fr);
-                /* 4 rows */
-                grid-auto-rows: calc(10vh - 10px);
+                display: grid;
+                grid-template-columns: repeat(4, 80px);
+                /* 4 columns of 100px width */
+                grid-auto-rows: 80px;
+                /* Automatic rows of 100px height */
+                grid-gap: 5px;
             }
 
             .box {
-                width: 20vw;
+                width: 80px;
                 /* Adjusted width */
-                height: 20vw;
+                height: 80px;
                 /* Adjusted height */
                 font-size: 15px;
-                /* Adjusted font size */
                 margin: 2px;
-                /* Adjusted margin */
+                line-height: 100px;
+                /* Center text vertically */
             }
 
             #submit-button {
                 font-size: 14px;
-                /* Adjusted font size */
                 padding: 10px;
-                /* Adjusted padding */
                 margin-top: 10px;
-                /* Adjusted margin top */
-                font-weight: 600;
-                display: flex;
-                width: fit-content;
-                min-width: 5.5em;
-                height: 3em;
-                text-align: center;
-                justify-content: center;
-                align-items: center;
-                padding: 15px 0;
-                max-width: 80vw;
-                border-radius: 32px;
-                line-height: 1.5em;
-                cursor: pointer;
-                border: black solid 1px;
-                /* Keep the same border */
-                color: black;
-                /* Set the text color to black */
             }
 
-
             .side-box {
-                /* width: 90%; */
-                width: calc(4 * (20vw + 4px) + 8px);
+                width: 420px;
                 /* Adjusted width */
-                padding: 5px;
-                /* Adjusted padding */
+                padding: 10px;
                 margin-top: 5px;
-                /* Adjusted margin top */
-                font-size: 10px;
+                font-size: 12px;
                 /* Adjusted font size */
             }
 
             .bubble {
                 width: 10px;
-                /* Adjusted width */
                 height: 10px;
-                /* Adjusted height */
-                margin-top: 15px;
+                margin-top: 30px;
             }
 
             #mode-toggle {
