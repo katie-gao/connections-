@@ -157,12 +157,12 @@
 
         #mode-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 50px;
+            right: 50px;
             background-color: transparent;
             border: none;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 60px;
             z-index: 9999;
         }
 
@@ -219,8 +219,8 @@
 
             #mode-toggle {
                 font-size: 12px; /* Adjusted font size */
-                top: 60px; /* Move it more downwards */
-                left: 20px; /* Move it more to the left */
+                top: 10px; /* Move it more downwards */
+                right: 10px; /* Move it more to the left */
             }
         }
     </style>
@@ -303,10 +303,10 @@
 
             if (isDarkMode) {
                 body.classList.add('dark');
-                modeToggle.innerHTML = '<i class="bi bi-sun" style="font-size:60px"> </i> ';
-            } else {
+                modeToggle.innerHTML = '<i class="bi bi-sun" > </i> '; // style="font-size:60px"
+            } else { 
                 body.classList.remove('dark');
-                modeToggle.innerHTML = '<i class="bi bi-moon" style="font-size:60px"></i>';
+                modeToggle.innerHTML = '<i class="bi bi-moon" ></i>'; //style="font-size:60px"
             }
 
             updateBoxColors();
